@@ -43,7 +43,7 @@ api.post("/edit/:id", async (req,res)=> {
 aoi.get("/edit/:id", async (req,res)=>{
     const crud = await collection.findOne({_id: new ObjectId(req.params.id)})
     res.render("edit.ejs",{crud})
-}
+})
 
 //delete
 api.get("/delete/:id", async (req,res)=>{
