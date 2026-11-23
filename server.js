@@ -17,12 +17,9 @@ api.get("index",(req,res)=>{
 //criar um novo cadastro
 
 api.post("/show",async (req,res)=>{
-    awai collection.insertOne({
-        nomeCompleto: req.body.nomeCompleto,
-        endereço: req.body.endereço
-        cpf: req.body.cpf,
-        telefone:req.body.telefone,
-        email: req.body.email
+    await collection.insertOne({
+        nome: req.body.nome,
+        
     })
     res.redirect("/show")
 })
@@ -35,13 +32,38 @@ api.post("/edit/:id", async (req,res)=> {
         {_id: new ObjectId(req.params.id)},
         {
             $set:{
-                nomeCompleto: req.body.nomeCompleto,
-        endereço: req.body.endereço
-        cpf: req.body.cpf,
-        telefone:req.body.telefone,
-        email: req.body.email
+                nome: req.body.nome,
+       
             }
         }
     )
     res.redirect("/show")
+})
+//vizualizar o editor
+aoi.get("/edit/:id", async (req,res)=>{
+    const crud = await collection.findOne({_id: new ObjectId(req.params.id)})
+    res.render("edit.ejs",{crud})
+}
+
+//delete
+api.get("/delete/:id", async (req,res)=>{
+    await collection.deleteOne({_id: new ObjectId(req.params.id)})
+    res.redirect("/show")
+})
+
+//criar o servidor e iniciar o servidor e banco
+
+async function iniciar(){
+    await client.connect()
+    const db = client.db("Guardalink")
+    collection = db.collection("crud")
+    console.log("Conectado ao banco de dados")
+
+    api.listen(3000,function(){
+        console.log("Servidor rodando na porta 3000")
+    }
+)
+}
+iniciar().catch(function (erro){
+    console.error("Erro ao iniciar o servidor:" + erro)
 })
