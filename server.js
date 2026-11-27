@@ -6,12 +6,13 @@ dotenv.config()
 const url = process.env.DATABASE_URL
 const ObjectId = require("mongodb").ObjectId
 const client = new MongoClient(url)
+
 let collection
 
 api.set("view engine","ejs")
-api.use(express.urlencoded({extend:true}))
-api.get("index",(req,res)=>{
-    res.render(index.ejs)
+api.use(express.urlencoded({extended:true}))
+api.get("/index",(req,res)=>{
+    res.render("index.ejs")
 })
 
 //criar um novo cadastro
@@ -23,12 +24,12 @@ api.post("/show",async (req,res)=>{
     })
     res.redirect("/show")
 })
-api.get("/show",async (res,req)=>{
-    await collection.find().toArray()
-    res.render("/show.ejs",{crud})
+api.get("/show",async (req,res)=>{
+    const crud =await collection.find().toArray()
+    res.render("show.ejs",{crud})
 })
 api.post("/edit/:id", async (req,res)=> {
-    await collection.udateOne(
+    await collection.updateOne(
         {_id: new ObjectId(req.params.id)},
         {
             $set:{
@@ -40,7 +41,7 @@ api.post("/edit/:id", async (req,res)=> {
     res.redirect("/show")
 })
 //vizualizar o editor
-aoi.get("/edit/:id", async (req,res)=>{
+api.get("/edit/:id", async (req,res)=>{
     const crud = await collection.findOne({_id: new ObjectId(req.params.id)})
     res.render("edit.ejs",{crud})
 })

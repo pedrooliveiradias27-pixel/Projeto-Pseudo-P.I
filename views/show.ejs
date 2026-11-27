@@ -1,37 +1,31 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <title>Formularios</title>
+    <title>Relatórios</title>
 </head>
-
 <body>
-    <h2>Relatorios</h2>
-    <link rel="stylesheet" href="/style.css">
+    <h2>Relatórios</h2>
     <table border="1">
         <thead>
             <tr>
                 <td>Nome</td>
-                <td>Sobrenome</td>
                 <td>Ação</td>
             </tr>
         </thead>
         <tbody>
-            <% historias.forEach(function(details) { %>
+            <% crud.forEach(function(details) { %>
                 <tr>
+                    <td><%= details.nome %></td>
                     <td>
-                        <%= details.name %>
-                    </td>
-                    <td>
-                    
-                    </td>
-                    <td><a href="/edit/<%= details._id %>">Alterar</a> - <a href="/delete/<%= details._id %>">Remover</a>
+                        <a href="/edit/<%= details._id %>">Alterar</a> - 
+                        <a href="/delete/<%= details._id %>">Remover</a>
                     </td>
                 </tr>
-                <% }) %>
+            <% }) %>
         </tbody>
-    </table> <button><a href="/index">CriarAlgo Novo</a></button>
+    </table>
+    <br>
+    <a href="/index"><button type="button">Criar Algo Novo</button></a>
 </body>
-
 </html>
