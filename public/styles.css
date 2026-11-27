@@ -1,0 +1,372 @@
+:root {
+    --primary: #2563EB;
+    --primary-dark: #1D4ED8;
+    --primary-light: #EFF6FF;
+    --bg: #0F172A;
+    --card-bg: #1E293B;
+    --border: #334155;
+    --text: #F8FAFC;
+    --text-muted: #94A3B8;
+    --success: #10B981;
+    --warning: #F59E0B;
+    --danger: #EF4444;
+    --info: #38BDF8;
+    --radius: 12px;
+    --font: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+
+/* Reset basico */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font);
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    line-height: 1.6;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+/* ===================== CABECALHO (logo + titulo) ===================== */
+header {
+    text-align: center;
+    padding: 40px 24px 32px;
+    background: linear-gradient(180deg, var(--card-bg) 0%, var(--bg) 100%);
+    border-bottom: 1px solid var(--border);
+}
+
+/* Logo exibida no topo da pagina */
+header .logo {
+    display: block;
+    height: 84px;
+    width: auto;
+    margin: 0 auto 14px;
+}
+
+header h1 {
+    font-size: 2rem;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+}
+
+header h1 .accent {
+    color: var(--primary);
+}
+
+header p {
+    color: var(--text-muted);
+    margin-top: 6px;
+    font-size: 1rem;
+}
+
+/* Variacoes do cabecalho (mudam a cor da linha de baixo) */
+header.amarelo { border-bottom: 2px solid var(--warning); }
+header.rosa    { border-bottom: 2px solid var(--danger); }
+
+/* ===================== LAYOUT ===================== */
+.container,
+.container-form {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 40px 24px 60px;
+}
+
+/* Formularios e fichas ficam em uma coluna mais estreita */
+.container.estreito,
+.container-form {
+    max-width: 680px;
+}
+
+/* Cabecalho que fica dentro do container vira um cartao */
+.container > header,
+.container-form > header {
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    margin-bottom: 28px;
+}
+
+.container > header.amarelo,
+.container-form > header.amarelo { border-bottom: 2px solid var(--warning); }
+.container > header.rosa,
+.container-form > header.rosa    { border-bottom: 2px solid var(--danger); }
+
+h2 {
+    font-size: 1.4rem;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--border);
+}
+
+/* ===================== BOTOES ===================== */
+.btn,
+button {
+    display: inline-block;
+    font-family: inherit;
+    font-size: .95rem;
+    font-weight: 600;
+    padding: 10px 20px;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    background: var(--primary);
+    color: #fff;
+    cursor: pointer;
+    transition: all .15s ease;
+}
+
+.btn:hover,
+button:hover {
+    background: var(--primary-dark);
+}
+
+.btn.secundario {
+    background: var(--card-bg);
+    border-color: var(--border);
+    color: var(--text-muted);
+}
+
+.btn.secundario:hover {
+    border-color: var(--primary);
+    color: var(--text);
+}
+
+.btn-primary { background: var(--primary); }
+.btn-cyan    { background: var(--info); color: #0F172A; }
+.btn-cyan:hover { background: #7DD3FC; }
+.btn-danger  { background: var(--danger); }
+.btn-danger:hover { background: #DC2626; }
+
+.btn-ghost {
+    background: transparent;
+    border-color: var(--border);
+    color: var(--text-muted);
+}
+
+.btn-ghost:hover {
+    background: var(--card-bg);
+    border-color: var(--primary);
+    color: var(--text);
+}
+
+.btn-sm {
+    padding: 4px 12px;
+    font-size: .8rem;
+}
+
+.toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+/* ===================== TABELA (LISTAGEM) ===================== */
+.tabela-wrapper {
+    overflow-x: auto;
+    margin-bottom: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    font-size: .9rem;
+    margin-bottom: 20px;
+}
+
+th, td {
+    padding: 12px 14px;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+}
+
+thead th {
+    background: rgba(37, 99, 235, 0.15);
+    color: var(--info);
+    font-size: .78rem;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+    white-space: nowrap;
+}
+
+tbody tr:hover {
+    background: rgba(37, 99, 235, 0.08);
+}
+
+.tabela-wrapper td {
+    white-space: nowrap;
+}
+
+.acoes {
+    white-space: nowrap;
+}
+
+.email {
+    color: var(--info);
+}
+
+.vazio {
+    text-align: center;
+    padding: 32px;
+    color: var(--text-muted);
+}
+
+.link-editar, .link-deletar, td a:not(.btn) {
+    font-weight: 600;
+}
+
+.link-editar, td a:not(.btn):first-child { color: var(--info); }
+.link-deletar { color: var(--danger); }
+
+.badge {
+    display: inline-block;
+    padding: 2px 10px;
+    border-radius: 999px;
+    background: rgba(37, 99, 235, 0.15);
+    border: 1px solid rgba(37, 99, 235, 0.35);
+    color: #93C5FD;
+    font-size: .75rem;
+}
+
+/* ===================== FORMULARIOS ===================== */
+form {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 28px;
+}
+
+form.rosa {
+    border-color: var(--danger);
+}
+
+.campo {
+    margin-bottom: 18px;
+}
+
+label {
+    display: block;
+    margin: 14px 0 6px;
+    color: var(--text-muted);
+    font-size: .8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+}
+
+.campo label {
+    margin-top: 0;
+}
+
+input, select {
+    width: 100%;
+    padding: 10px 12px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: var(--text);
+    font-family: inherit;
+    font-size: .95rem;
+    outline: none;
+    transition: all .15s ease;
+}
+
+input::placeholder {
+    color: #64748B;
+}
+
+input:focus, select:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.25);
+}
+
+/* Formularios simples (sem .campo): inputs lado a lado ficam um embaixo do outro */
+form > input {
+    margin-bottom: 12px;
+}
+
+.linha {
+    display: flex;
+    gap: 16px;
+}
+
+.linha .campo {
+    flex: 1;
+}
+
+.acoes-form {
+    display: flex;
+    gap: 12px;
+    margin-top: 22px;
+}
+
+/* ===================== ERROS DE VALIDACAO ===================== */
+.erro {
+    display: block;
+    margin-top: 6px;
+    color: var(--danger);
+    font-size: .8rem;
+}
+
+.campo:has(.erro) input,
+.campo:has(.erro) select {
+    border-color: var(--danger);
+    box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.2);
+}
+
+/* ===================== FICHA DE DETALHES ===================== */
+.ficha {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 8px 24px;
+    margin-bottom: 20px;
+}
+
+.ficha-linha {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--border);
+}
+
+.ficha-linha:last-child {
+    border-bottom: none;
+}
+
+.ficha-label {
+    color: var(--text-muted);
+    font-size: .8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+}
+
+.ficha-valor {
+    text-align: right;
+}
+
+/* ===================== RODAPE ===================== */
+footer {
+    margin-top: 32px;
+    text-align: center;
+    color: var(--text-muted);
+    font-size: .8rem;
+}
+
+@media (max-width: 600px) {
+    .linha { flex-direction: column; gap: 0; }
+    header h1 { font-size: 1.5rem; }
+}

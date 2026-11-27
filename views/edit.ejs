@@ -3,9 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <title>Editar Registro</title>
+    <link rel="icon" type="image/png" href= "/logogl.png"
     <link rel="stylesheet" href="/style.css">
 </head>
 <body>
+    <header>
+        <img class="logogl" src="/logogl.png" alt="Logo Guarda Link">
+        <h1>Guarda Link</h1>
+    </header>
+    
     <h2>Editar Registro</h2>
     <form action="/edit/<%= crud._id %>" method="POST">
         <input type="text" value="<%= crud.nome %>" name="nome" required>

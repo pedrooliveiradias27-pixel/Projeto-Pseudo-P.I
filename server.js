@@ -8,7 +8,7 @@ const ObjectId = require("mongodb").ObjectId
 const client = new MongoClient(url)
 
 let collection
-
+api.use(express.static("public"))
 api.set("view engine","ejs")
 api.use(express.urlencoded({extended:true}))
 api.use(express.static("views"))
