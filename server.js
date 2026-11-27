@@ -11,6 +11,7 @@ let collection
 
 api.set("view engine","ejs")
 api.use(express.urlencoded({extended:true}))
+api.use(express.static("views"))
 api.get("/index",(req,res)=>{
     res.render("index.ejs")
 })
@@ -20,7 +21,8 @@ api.get("/index",(req,res)=>{
 api.post("/show",async (req,res)=>{
     await collection.insertOne({
         nome: req.body.nome,
-        
+        email: req.body.email,
+        senha: req.body.senha
     })
     res.redirect("/show")
 })
@@ -34,7 +36,8 @@ api.post("/edit/:id", async (req,res)=> {
         {
             $set:{
                 nome: req.body.nome,
-       
+                email: req.body.email,
+                senha: req.body.senha
             }
         }
     )

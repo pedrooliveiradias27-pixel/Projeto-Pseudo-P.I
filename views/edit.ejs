@@ -3,11 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <title>Editar Registro</title>
+    <link rel="stylesheet" href="/style.css">
 </head>
 <body>
     <h2>Editar Registro</h2>
     <form action="/edit/<%= crud._id %>" method="POST">
         <input type="text" value="<%= crud.nome %>" name="nome" required>
+        <input type="email" value="<%= crud.email %>" name="email" required>
+        <input type="password" value="<%= crud.senha %>" name="senha" required>
         <br><br>
         <a href="/show"><button type="button">Todos</button></a>
         <button type="submit">Editar</button>

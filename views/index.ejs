@@ -3,12 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <title>Formulário</title>
+    <link rel="stylesheet" href="/style.css">
 </head>
 <body>
     <div class="card">
         <h2>Adicionar</h2>
         <form action="/show" method="POST">
             <input type="text" placeholder="Nome" name="nome" required>
+            <input type="email" placeholder="Email" name="email" required>
+            <input type="password" placeholder="Senha" name="senha" required>
             <button type="submit">Prosseguir</button>
         </form>
     </div>
